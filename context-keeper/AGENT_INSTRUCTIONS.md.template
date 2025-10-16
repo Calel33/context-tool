@@ -1,0 +1,16 @@
+# Context Keeper CLI — Agent Instructions
+
+Commands:
+- PowerShell (Windows) invocation with full path:
+  - & "C:\\Users\\user1\\Desktop\\context-tool\\context-keeper\\context.exe" init
+  - & "C:\\Users\\user1\\Desktop\\context-tool\\context-keeper\\context.exe" save --key "k" --value "v" [--channel "c"] [--priority "high|normal|low"] [--json]
+  - & "C:\\Users\\user1\\Desktop\\context-tool\\context-keeper\\context.exe" get --key "k" [--json]
+  - & "C:\\Users\\user1\\Desktop\\context-tool\\context-keeper\\context.exe" list [--channel "c"] [--limit N] [--json]
+  - & "C:\\Users\\user1\\Desktop\\context-tool\\context-keeper\\context.exe" delete --key "k" [--json]
+
+Notes:
+- Use --json for machine-readable output.
+- Data is stored at ./.context-keeper/context.db within the project root.
+- Writes are limited to the .context-keeper directory.
+ - Run from the project root (not inside ./.context-keeper).
+ - If PATH is configured, you can use `context.exe ...`; otherwise prefer the full path with PowerShell call operator `&`.
