@@ -8,8 +8,8 @@ Adopt Charmbracelet Bubbles components across the GUI (table, inputs, textarea, 
 - 1.4 Keyboard/help affordances: Short, discoverable keybinds and inline help text consistent with Bubbles patterns.
 - 1.5 Validation: All tests pass and manual CRUD flows succeed; no CLI contract changes.
 ## 1. Implementation
-- [ ] 1.1 Confirm Bubbles usage for list (table), inputs, and textarea; integrate Lipgloss tokens
-- [ ] 1.2 Add confirmation modal pattern for delete using Bubbles-compatible view
-- [ ] 1.3 Ensure non-blocking updates with toast messages on save/delete/open errors
-- [ ] 1.4 Validate keyboard affordances and help text per patterns
+- [x] 1.1 Confirm Bubbles usage for list (table), inputs, and textarea; integrate Lipgloss tokens
+- [x] 1.2 Add confirmation modal pattern for delete using Bubbles-compatible view
+- [x] 1.3 Ensure non-blocking updates with toast messages on save/delete/open errors
+- [x] 1.4 Validate keyboard affordances and help text per patterns
 - [ ] 1.5 Run tests and manual validation; no CLI behavioral change
