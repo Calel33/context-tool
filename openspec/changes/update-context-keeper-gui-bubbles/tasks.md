@@ -12,4 +12,4 @@ Adopt Charmbracelet Bubbles components across the GUI (table, inputs, textarea, 
 - [x] 1.2 Add confirmation modal pattern for delete using Bubbles-compatible view
 - [x] 1.3 Ensure non-blocking updates with toast messages on save/delete/open errors
 - [x] 1.4 Validate keyboard affordances and help text per patterns
-- [ ] 1.5 Run tests and manual validation; no CLI behavioral change
+- [ ] 1.5 Run tests and manual validation; no CLI behavioral change (PR adds UI only; confirm manually)

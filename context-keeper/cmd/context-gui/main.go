@@ -479,7 +479,7 @@ func newKeymap() keymap {
 
 func viewHelpShort(m model) string {
     // minimal inline help; non-blocking and uses tokens
-    return "\n" + m.help.ShortHelpView([]key.Binding{m.keys.Search, m.keys.Edit, m.keys.New, m.keys.Delete, m.keys.Quit})
+    return "\n" + m.help.ShortHelpView([]key.Binding{m.keys.Search, m.keys.Edit, m.keys.New, m.keys.Delete, m.keys.Reload, m.keys.OpenProj, m.keys.Quit})
 }
 
 func main() {
