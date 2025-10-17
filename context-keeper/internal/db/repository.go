@@ -29,6 +29,16 @@ func NewRepository(dbPath string) (*Repository, error) {
     return &Repository{db: db}, nil
 }
 
+func parseTS(s string) time.Time {
+    // SQLite CURRENT_TIMESTAMP default uses "2006-01-02 15:04:05".
+    // Some drivers may return RFC3339. Try common formats.
+    layouts := []string{time.RFC3339Nano, time.RFC3339, "2006-01-02 15:04:05"}
+    for _, l := range layouts {
+        if t, err := time.Parse(l, s); err == nil { return t }
+    }
+    return time.Time{}
+}
+
 func createSchema(db *sql.DB) error {
     _, err := db.Exec(`CREATE TABLE IF NOT EXISTS context_items (
         key TEXT PRIMARY KEY,
@@ -57,8 +67,8 @@ func (r *Repository) GetItemByKey(key string) (*Item, error) {
     var it Item
     var created, updated string
     if err := row.Scan(&it.Key, &it.Value, &it.Channel, &it.Priority, &created, &updated); err != nil { return nil, err }
-    it.CreatedAt, _ = time.Parse(time.RFC3339Nano, created)
-    it.UpdatedAt, _ = time.Parse(time.RFC3339Nano, updated)
+    it.CreatedAt = parseTS(created)
+    it.UpdatedAt = parseTS(updated)
     return &it, nil
 }
 
@@ -82,6 +92,8 @@ func (r *Repository) ListItems(channel *string, limit *int) ([]Item, error) {
         var it Item
         var created, updated string
         if err := rows.Scan(&it.Key, &it.Value, &it.Channel, &it.Priority, &created, &updated); err != nil { return nil, err }
+        it.CreatedAt = parseTS(created)
+        it.UpdatedAt = parseTS(updated)
         out = append(out, it)
     }
     return out, rows.Err()
